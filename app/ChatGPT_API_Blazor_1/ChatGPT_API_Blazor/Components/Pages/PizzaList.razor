@@ -1,0 +1,50 @@
+@page "/pizzalist"
+@inject ChatGPT_API_Blazor.Services.PizzaService PizzaService
+
+<h3>Pizza List</h3>
+
+@if (pizzas == null)
+{
+    <p>Loading...</p>
+}
+else if (pizzas.Count == 0)
+{
+    <p>No pizzas found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Base Price</th>
+                <th>Quantity</th>
+                <th>Special</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pizza in pizzas)
+            {
+                <tr>
+                    <td>@pizza.Id</td>
+                    <td>@pizza.Name</td>
+                    <td>@pizza.Size</td>
+                    <td>@pizza.BasePrice</td>
+                    <td>@pizza.Quantity</td>
+                    <td>@pizza.Special?.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<ChatGPT_API_Blazor.Model.Pizza> pizzas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        pizzas = await PizzaService.GetPizzasAsync();
+    }
+} 

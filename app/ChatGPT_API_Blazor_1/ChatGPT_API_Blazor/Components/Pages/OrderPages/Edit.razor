@@ -1,0 +1,245 @@
+﻿@page "/orders/edit"
+@using Microsoft.EntityFrameworkCore
+@using ChatGPT_API_Blazor.Model
+@inject IDbContextFactory<ChatGPT_API_Blazor.Data.ChatGPT_API_BlazorContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>注文編集</PageTitle>
+
+@if (Order is null)
+{
+    <div class="container d-flex justify-content-center align-items-center" style="min-height:50vh;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="mb-0">注文編集</h2>
+                    </div>
+                    <div class="card-body">
+            <EditForm method="post" Model="Order" OnValidSubmit="UpdateOrder" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                            <ValidationSummary class="alert alert-danger" role="alert"/>
+                            
+                            <!-- 基本情報 -->
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <label for="orderid" class="form-label fw-bold">注文番号:</label>
+                    <InputNumber id="orderid" @bind-Value="Order.OrderId" class="form-control" />
+                    <ValidationMessage For="() => Order.OrderId" class="text-danger" />
+                </div>
+                                <div class="col-md-4">
+                                    <label for="userid" class="form-label fw-bold">ユーザーID:</label>
+                    <InputText id="userid" @bind-Value="Order.UserId" class="form-control" />
+                    <ValidationMessage For="() => Order.UserId" class="text-danger" />
+                </div>
+                                <div class="col-md-4">
+                                    <label for="createdtime" class="form-label fw-bold">作成日時:</label>
+                    <InputDate id="createdtime" @bind-Value="Order.CreatedTime" class="form-control" />
+                    <ValidationMessage For="() => Order.CreatedTime" class="text-danger" />
+                </div>
+                            </div>
+
+                            <!-- 配送先情報 -->
+                            <div class="card mb-4">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0">配送先情報</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label fw-bold">お名前:</label>
+                    <InputText @bind-Value="Order.DeliveryAddress.Name" class="form-control" />
+                </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label fw-bold">番地・丁目:</label>
+                    <InputText @bind-Value="Order.DeliveryAddress.Street" class="form-control" />
+                </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label fw-bold">市区町村:</label>
+                    <InputText @bind-Value="Order.DeliveryAddress.City" class="form-control" />
+                </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label fw-bold">都道府県:</label>
+                    <InputText @bind-Value="Order.DeliveryAddress.Prefecture" class="form-control" />
+                </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label class="form-label fw-bold">郵便番号:</label>
+                    <InputText @bind-Value="Order.DeliveryAddress.PostalCode" class="form-control" />
+                </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label class="form-label fw-bold">電話番号:</label>
+                    <InputText @bind-Value="Order.DeliveryAddress.Phone" class="form-control" />
+                </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ピザ一覧 -->
+                            <div class="card mb-4">
+                                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">注文ピザ一覧</h5>
+                                    <button type="button" class="btn btn-success btn-sm" @onclick="AddPizza">
+                                        <i class="bi bi-plus"></i> ピザを追加
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    @if (Order.Pizzas.Count > 0)
+                                    {
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover">
+                                                <thead class="table-info">
+                                                    <tr>
+                                                        <th>ピザ名</th>
+                                                        <th>価格</th>
+                                                        <th>数量</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                        @for (int i = 0; i < Order.Pizzas.Count; i++)
+                        {
+                                                        <tr>
+                                                            <td>
+                                                                <InputText @bind-Value="Order.Pizzas[i].Name" class="form-control" placeholder="ピザ名" />
+                                                            </td>
+                                                            <td>
+                                                                <InputNumber @bind-Value="Order.Pizzas[i].BasePrice" class="form-control" placeholder="価格" />
+                                                            </td>
+                                                            <td>
+                                                                <InputNumber @bind-Value="Order.Pizzas[i].Quantity" class="form-control" placeholder="数量" />
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-danger btn-sm" @onclick="(() => RemovePizza(i))">
+                                                                    <i class="bi bi-trash"></i> 削除
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <p class="text-muted text-center">ピザが登録されていません</p>
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- 操作ボタン -->
+                            <div class="d-flex justify-content-between">
+                                <a href="/orders" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left"></i> 一覧に戻る
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check"></i> 保存
+                                </button>
+                            </div>
+                        </EditForm>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [SupplyParameterFromQuery]
+    private int Id { get; set; }
+
+    private Order Order { get; set; } = new Order();
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        var dbOrder = await context.Orders
+            .Include(o => o.Pizzas)
+            .FirstOrDefaultAsync(o => o.Id == Id);
+        if (dbOrder != null)
+        {
+            Order = dbOrder;
+            if (Order.DeliveryAddress == null) Order.DeliveryAddress = new Address();
+            if (Order.Pizzas == null) Order.Pizzas = new List<Pizza>();
+        }
+        else
+        {
+            NavigationManager.NavigateTo("notfound");
+            return;
+        }
+    }
+
+    private async Task UpdateOrder()
+    {
+        using var context = DbFactory.CreateDbContext();
+        // 既存OrderとPizzasをDBから取得
+        var dbOrder = await context.Orders
+            .Include(o => o.Pizzas)
+            .FirstOrDefaultAsync(o => o.Id == Order.Id);
+
+        if (dbOrder == null)
+        {
+            NavigationManager.NavigateTo("notfound");
+            return;
+        }
+
+        // Order本体のプロパティを更新
+        dbOrder.OrderId = Order.OrderId;
+        dbOrder.UserId = Order.UserId;
+        dbOrder.CreatedTime = Order.CreatedTime;
+        
+        // DeliveryAddressを新しいオブジェクトとして設定（EF Coreのowned entity更新のため）
+        dbOrder.DeliveryAddress = new Address
+        {
+            Name = Order.DeliveryAddress.Name,
+            Street = Order.DeliveryAddress.Street,
+            City = Order.DeliveryAddress.City,
+            Prefecture = Order.DeliveryAddress.Prefecture,
+            PostalCode = Order.DeliveryAddress.PostalCode,
+            Phone = Order.DeliveryAddress.Phone
+        };
+
+        // --- ピザの差分反映 ---
+        // 1. 既存ピザを更新 or 削除
+        dbOrder.Pizzas.RemoveAll(p => !Order.Pizzas.Any(op => op.Id == p.Id));
+        foreach (var pizza in dbOrder.Pizzas)
+        {
+            var updated = Order.Pizzas.First(op => op.Id == pizza.Id);
+            pizza.Name = updated.Name;
+            pizza.BasePrice = updated.BasePrice;
+            pizza.Quantity = updated.Quantity;
+            pizza.Size = updated.Size;
+            pizza.SpecialId = updated.SpecialId;
+        }
+        // 2. 新規ピザを追加
+        var newPizzas = Order.Pizzas.Where(op => op.Id == 0).ToList();
+        foreach (var pizza in newPizzas)
+        {
+            pizza.OrderId = dbOrder.Id; // OrderIdをセット
+            dbOrder.Pizzas.Add(pizza);
+        }
+
+        // 変更を明示的に追跡
+        context.Orders.Update(dbOrder);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/orders");
+    }
+
+    private void AddPizza()
+    {
+        Order.Pizzas.Add(new Pizza());
+    }
+
+    private void RemovePizza(int index)
+    {
+        if (index >= 0 && index < Order.Pizzas.Count)
+            Order.Pizzas.RemoveAt(index);
+    }
+}

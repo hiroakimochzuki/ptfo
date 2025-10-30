@@ -1,0 +1,84 @@
+﻿@page "/orders/details"
+@using Microsoft.EntityFrameworkCore
+@using ChatGPT_API_Blazor.Model
+@inject IDbContextFactory<ChatGPT_API_Blazor.Data.ChatGPT_API_BlazorContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>Order</h2>
+    <hr />
+    @if (order is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">OrderId</dt>
+            <dd class="col-sm-10">@order.OrderId</dd>
+            <dt class="col-sm-2">UserId</dt>
+            <dd class="col-sm-10">@order.UserId</dd>
+            <dt class="col-sm-2">CreatedTime</dt>
+            <dd class="col-sm-10">@order.CreatedTime</dd>
+            <dt class="col-sm-2">お名前</dt>
+            <dd class="col-sm-10">@order.DeliveryAddress.Name</dd>
+            <dt class="col-sm-2">番地・丁目 (Street)</dt>
+            <dd class="col-sm-10">@order.DeliveryAddress.Street</dd>
+            <dt class="col-sm-2">市区町村 (City)</dt>
+            <dd class="col-sm-10">@order.DeliveryAddress.City</dd>
+            <dt class="col-sm-2">都道府県 (Prefecture)</dt>
+            <dd class="col-sm-10">@order.DeliveryAddress.Prefecture</dd>
+            <dt class="col-sm-2">郵便番号 (PostalCode)</dt>
+            <dd class="col-sm-10">@order.DeliveryAddress.PostalCode</dd>
+            <dt class="col-sm-2">電話番号 (Phone)</dt>
+            <dd class="col-sm-10">@order.DeliveryAddress.Phone</dd>
+            <dt class="col-sm-2">注文ピザ一覧</dt>
+            <dd class="col-sm-10">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>ピザ名</th>
+                            <th>価格</th>
+                            <th>数量</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pizza in order.Pizzas)
+                        {
+                            <tr>
+                                <td>@pizza.Name</td>
+                                <td>@pizza.BasePrice</td>
+                                <td>@pizza.Quantity</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </dd>
+        </dl>
+        <div>
+            <a href="@($"/orders/edit?id={order.Id}")">Edit</a> |
+            <a href="@($"/orders")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private Order? order;
+
+    [SupplyParameterFromQuery]
+    private int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        order = await context.Orders.FirstOrDefaultAsync(m => m.Id == Id);
+
+        if (order is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

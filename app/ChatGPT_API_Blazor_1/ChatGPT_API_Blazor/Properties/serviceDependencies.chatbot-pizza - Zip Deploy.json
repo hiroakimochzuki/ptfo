@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "mssql4": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('serviceConnectorResourceGroupName')]/providers/Microsoft.Web/sites/chatbot-pizza/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsDatabaseConnection1_C69FC210B1",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/chatbot-pizza-server/databases/chatbot-pizza-database",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DatabaseConnection1"
+    },
+    "mssql1": {
+      "secretStore": "AzureAppSettings",
+      "type": "mssql.onprem",
+      "connectionId": "ConnectionStrings:ChatGPT_API_BlazorContext",
+      "dynamicId": null
+    },
+    "mssql3": {
+      "secretStore": "AzureAppSettings",
+      "type": "mssql.onprem",
+      "connectionId": "ConnectionStrings:DefaultConnection",
+      "dynamicId": null
+    }
+  }
+}

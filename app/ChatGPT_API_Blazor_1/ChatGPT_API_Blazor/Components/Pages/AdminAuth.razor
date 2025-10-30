@@ -1,0 +1,45 @@
+@page "/admin-auth"
+@using Microsoft.AspNetCore.Components.Web
+@inject NavigationManager NavigationManager
+
+<PageTitle>管理者認証</PageTitle>
+
+<div class="container d-flex flex-column align-items-center justify-content-center" style="min-height:60vh;">
+    <div class="card shadow p-4" style="max-width:400px; width:100%;">
+        <h2 class="mb-4 text-center text-primary">管理者ページ認証</h2>
+        <div class="mb-3">
+            <label for="adminPassword" class="form-label">パスワードを入力してください</label>
+            <input type="password" id="adminPassword" class="form-control" @bind="adminPassword" autofocus />
+        </div>
+        @if (adminError != null)
+        {
+            <div class="alert alert-danger">@adminError</div>
+        }
+        <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-primary w-50 me-2" @onclick="CheckAdminPassword">認証</button>
+            <button class="btn btn-secondary w-50" @onclick="GoHome">キャンセル</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string adminPassword = string.Empty;
+    private string? adminError = null;
+    private const string AdminPassword = "microlink"; // ★本番では安全な方法で管理してください
+
+    private void CheckAdminPassword()
+    {
+        if (adminPassword == AdminPassword)
+        {
+            NavigationManager.NavigateTo("/orders");
+        }
+        else
+        {
+            adminError = "パスワードが違います";
+        }
+    }
+    private void GoHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+} 

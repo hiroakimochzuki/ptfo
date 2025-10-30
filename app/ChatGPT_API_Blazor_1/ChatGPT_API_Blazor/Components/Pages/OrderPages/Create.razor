@@ -1,0 +1,240 @@
+﻿@page "/orders/create"
+@using Microsoft.EntityFrameworkCore
+@using ChatGPT_API_Blazor.Model
+@inject IDbContextFactory<ChatGPT_API_Blazor.Data.ChatGPT_API_BlazorContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>新規注文作成</PageTitle>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">新規注文作成</h2>
+                </div>
+                <div class="card-body">
+                    <EditForm method="post" Model="Order" OnValidSubmit="AddOrder" FormName="create" Enhance>
+                        <DataAnnotationsValidator />
+                        <ValidationSummary class="alert alert-danger" role="alert"/>
+                        
+                        <!-- 基本情報 -->
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <label for="orderid" class="form-label fw-bold">注文番号:</label>
+                                <InputNumber id="orderid" @bind-Value="Order.OrderId" class="form-control" />
+                                <ValidationMessage For="() => Order.OrderId" class="text-danger" />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="userid" class="form-label fw-bold">ユーザーID:</label>
+                                <InputText id="userid" @bind-Value="Order.UserId" class="form-control" />
+                                <ValidationMessage For="() => Order.UserId" class="text-danger" />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="createdtime" class="form-label fw-bold">作成日時:</label>
+                                <InputDate id="createdtime" @bind-Value="Order.CreatedTime" class="form-control" />
+                                <ValidationMessage For="() => Order.CreatedTime" class="text-danger" />
+                            </div>
+                        </div>
+
+                        <!-- 配送先情報 -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">配送先情報</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">お名前:</label>
+                                        <InputText @bind-Value="Order.DeliveryAddress.Name" class="form-control" />
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">番地・丁目:</label>
+                                        <InputText @bind-Value="Order.DeliveryAddress.Street" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label fw-bold">市区町村:</label>
+                                        <InputText @bind-Value="Order.DeliveryAddress.City" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label fw-bold">都道府県:</label>
+                                        <InputText @bind-Value="Order.DeliveryAddress.Prefecture" class="form-control" />
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <label class="form-label fw-bold">郵便番号:</label>
+                                        <InputText @bind-Value="Order.DeliveryAddress.PostalCode" class="form-control" />
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <label class="form-label fw-bold">電話番号:</label>
+                                        <InputText @bind-Value="Order.DeliveryAddress.Phone" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ピザ選択・一覧 -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">ピザ選択・注文一覧</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- ピザ選択セクション -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">ピザを選択:</label>
+                                        <select class="form-select" @bind="selectedPizzaId">
+                                            <option value="0">ピザを選択してください</option>
+                                            @foreach (var special in availablePizzas)
+                                            {
+                                                <option value="@special.Id">@special.Name - $@special.BasePrice</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label fw-bold">数量:</label>
+                                        <InputNumber @bind-Value="selectedQuantity" class="form-control" min="1" />
+                                    </div>
+                                    <div class="col-md-3 d-flex align-items-end">
+                                        <button type="button" class="btn btn-success w-100" @onclick="AddSelectedPizza" disabled="@(selectedPizzaId == 0)">
+                                            <i class="bi bi-plus"></i> 追加
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- 選択済みピザ一覧 -->
+                                @if (Order.Pizzas.Count > 0)
+                                {
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover">
+                                            <thead class="table-info">
+                                                <tr>
+                                                    <th>ピザ名</th>
+                                                    <th>価格</th>
+                                                    <th>数量</th>
+                                                    <th>小計</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @for (int i = 0; i < Order.Pizzas.Count; i++)
+                                                {
+                                                    <tr>
+                                                        <td>@Order.Pizzas[i].Name</td>
+                                                        <td class="text-end">$@Order.Pizzas[i].BasePrice</td>
+                                                        <td class="text-center">@Order.Pizzas[i].Quantity</td>
+                                                        <td class="text-end">$@(Order.Pizzas[i].BasePrice * Order.Pizzas[i].Quantity)</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-danger btn-sm" @onclick="(() => RemovePizza(i))">
+                                                                <i class="bi bi-trash"></i> 削除
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                            <tfoot class="table-secondary">
+                                                <tr>
+                                                    <td colspan="3" class="text-end fw-bold">合計:</td>
+                                                    <td class="text-end fw-bold">$@Order.Pizzas.Sum(p => p.BasePrice * p.Quantity)</td>
+                                                    <td></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <p class="text-muted text-center">ピザが選択されていません</p>
+                                }
+                            </div>
+                        </div>
+
+                        <!-- 操作ボタン -->
+                        <div class="d-flex justify-content-between">
+                            <a href="/orders" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> 一覧に戻る
+                            </a>
+                            <button type="submit" class="btn btn-primary" disabled="@(Order.Pizzas.Count == 0)">
+                                <i class="bi bi-check"></i> 注文作成
+                            </button>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private Order Order { get; set; } = new();
+    private List<PizzaSpecial> availablePizzas = new();
+    private int selectedPizzaId = 0;
+    private int selectedQuantity = 1;
+
+    protected override void OnInitialized()
+    {
+        // Orderの初期化
+        Order = new Order
+        {
+            OrderId = 0,
+            UserId = string.Empty,
+            CreatedTime = DateTime.Now,
+            DeliveryAddress = new Address(),
+            Pizzas = new List<Pizza>()
+        };
+
+        // 利用可能なピザリストを初期化（PizzaDeliverと同じデータ）
+        availablePizzas = new List<PizzaSpecial>
+        {
+            new PizzaSpecial { Id = 1, Name = "The Baconatorizor", BasePrice = 11.99M, Description = "It has EVERY kind of bacon", ImageUrl = "img/pizzas/bacon.jpg" },
+            new PizzaSpecial { Id = 2, Name = "Buffalo chicken", BasePrice = 12.75M, Description = "Spicy chicken, hot sauce, and blue cheese", ImageUrl = "img/pizzas/meaty.jpg" },
+            new PizzaSpecial { Id = 3, Name = "Veggie Delight", BasePrice = 11.5M, Description = "It's like salad, but on a pizza", ImageUrl = "img/pizzas/salad.jpg" },
+            new PizzaSpecial { Id = 4, Name = "Margherita", BasePrice = 9.99M, Description = "Traditional Italian pizza with tomatoes and basil", ImageUrl = "img/pizzas/margherita.jpg" },
+            new PizzaSpecial { Id = 5, Name = "Basic Cheese Pizza", BasePrice = 11.99M, Description = "It's cheesy and delicious", ImageUrl = "img/pizzas/cheese.jpg" },
+            new PizzaSpecial { Id = 6, Name = "Classic pepperoni", BasePrice = 10.5M, Description = "It's the pizza you grew up with", ImageUrl = "img/pizzas/pepperoni.jpg" }
+        };
+    }
+
+    private void AddSelectedPizza()
+    {
+        if (selectedPizzaId > 0 && selectedQuantity > 0)
+        {
+            var selectedSpecial = availablePizzas.FirstOrDefault(p => p.Id == selectedPizzaId);
+            if (selectedSpecial != null)
+            {
+                var newPizza = new Pizza
+                {
+                    Name = selectedSpecial.Name,
+                    BasePrice = selectedSpecial.BasePrice,
+                    Quantity = selectedQuantity,
+                    SpecialId = selectedSpecial.Id,
+                    Size = 12 // デフォルトサイズ
+                };
+
+                Order.Pizzas.Add(newPizza);
+                
+                // 選択をリセット
+                selectedPizzaId = 0;
+                selectedQuantity = 1;
+                
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async Task AddOrder()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Orders.Add(Order);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/orders");
+    }
+
+    private void RemovePizza(int index)
+    {
+        if (index >= 0 && index < Order.Pizzas.Count)
+        {
+            Order.Pizzas.RemoveAt(index);
+            StateHasChanged();
+        }
+    }
+}

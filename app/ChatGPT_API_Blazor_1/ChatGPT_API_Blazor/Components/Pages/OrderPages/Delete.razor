@@ -1,0 +1,98 @@
+﻿@page "/orders/delete"
+@using Microsoft.EntityFrameworkCore
+@using ChatGPT_API_Blazor.Model
+@inject IDbContextFactory<ChatGPT_API_Blazor.Data.ChatGPT_API_BlazorContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Delete</PageTitle>
+
+<h1>Delete</h1>
+
+<p>Are you sure you want to delete this?</p>
+<div>
+    <h2>Order</h2>
+    <hr />
+    @if (order is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">OrderId</dt>
+            <dd class="col-sm-10">@order.OrderId</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">UserId</dt>
+            <dd class="col-sm-10">@order.UserId</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">CreatedTime</dt>
+            <dd class="col-sm-10">@order.CreatedTime</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">お名前</dt>
+            <dd class="col-sm-10">@order.DeliveryAddress.Name</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">番地・丁目 (Street)</dt>
+            <dd class="col-sm-10">@order.DeliveryAddress.Street</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">市区町村 (City)</dt>
+            <dd class="col-sm-10">@order.DeliveryAddress.City</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">都道府県 (Prefecture)</dt>
+            <dd class="col-sm-10">@order.DeliveryAddress.Prefecture</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">郵便番号 (PostalCode)</dt>
+            <dd class="col-sm-10">@order.DeliveryAddress.PostalCode</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">電話番号 (Phone)</dt>
+            <dd class="col-sm-10">@order.DeliveryAddress.Phone</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">注文ピザ一覧</dt>
+            <dd class="col-sm-10">
+                <ul>
+                    @foreach (var pizza in order.Pizzas)
+                    {
+                        <li>@pizza.Name × @pizza.Quantity（￥@pizza.BasePrice）</li>
+                    }
+                </ul>
+            </dd>
+        </dl>
+        <EditForm method="post" Model="order" OnValidSubmit="DeleteOrder" FormName="delete" Enhance>
+            <button type="submit" class="btn btn-danger" disabled="@(order is null)">Delete</button> |
+            <a href="/orders">Back to List</a>
+        </EditForm>
+    }
+</div>
+
+@code {
+    private Order? order;
+
+    [SupplyParameterFromQuery]
+    private int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        order = await context.Orders.FirstOrDefaultAsync(m => m.Id == Id);
+
+        if (order is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    private async Task DeleteOrder()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Orders.Remove(order!);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/orders");
+    }
+}

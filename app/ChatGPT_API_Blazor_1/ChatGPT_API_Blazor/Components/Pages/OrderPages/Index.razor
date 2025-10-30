@@ -1,0 +1,81 @@
+﻿@page "/orders"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using ChatGPT_API_Blazor.Model
+@using ChatGPT_API_Blazor.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<ChatGPT_API_Blazor.Data.ChatGPT_API_BlazorContext> DbFactory
+
+<PageTitle>注文一覧</PageTitle>
+
+<h1 class="mb-4 text-center text-primary">注文一覧</h1>
+
+<p>
+    <a href="orders/create" class="btn btn-success mb-3">新規注文作成</a>
+</p>
+
+<div class="container-fluid">
+    @foreach (var order in context.Orders.Include(o => o.Pizzas))
+    {
+        <div class="card mb-4 shadow-sm border-primary" style="border-width:2px;">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <span>注文番号: <strong>@order.OrderId</strong></span>
+                <span>ユーザー: <strong>@order.UserId</strong></span>
+                <span>日時: <strong>@order.CreatedTime.ToString("yyyy/MM/dd HH:mm")</strong></span>
+            </div>
+            <div class="card-body bg-light">
+                <div class="row mb-2">
+                    <div class="col-md-4"><span class="fw-bold text-secondary">お名前:</span> @order.DeliveryAddress.Name</div>
+                    <div class="col-md-4"><span class="fw-bold text-secondary">住所:</span> @order.DeliveryAddress.Prefecture @order.DeliveryAddress.City @order.DeliveryAddress.Street</div>
+                    <div class="col-md-2"><span class="fw-bold text-secondary">郵便:</span> @order.DeliveryAddress.PostalCode</div>
+                    <div class="col-md-2"><span class="fw-bold text-secondary">電話:</span> @order.DeliveryAddress.Phone</div>
+                </div>
+                <div class="mb-2">
+                    <span class="fw-bold text-success">注文ピザ一覧:</span>
+                    @if (order.Pizzas != null && order.Pizzas.Count > 0)
+                    {
+                        <table class="table table-bordered table-striped table-hover mt-2" style="background-color:#fff;">
+                            <thead class="table-info">
+                                <tr>
+                                    <th>ピザ名</th>
+                                    <th>価格</th>
+                                    <th>数量</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var pizza in order.Pizzas)
+                                {
+                                    <tr>
+                                        <td>@pizza.Name</td>
+                                        <td class="text-end">@pizza.BasePrice</td>
+                                        <td class="text-center">@pizza.Quantity</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <span class="text-muted">No pizzas</span>
+                    }
+                </div>
+                <div class="d-flex gap-2 mt-2">
+                    @* <a href="@($"orders/edit?id={order.Id}")" class="btn btn-outline-primary btn-sm">Edit</a> *@
+                    <a href="@($"orders/details?id={order.Id}")" class="btn btn-outline-secondary btn-sm">Details</a>
+                    <a href="@($"orders/delete?id={order.Id}")" class="btn btn-outline-danger btn-sm">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private ChatGPT_API_BlazorContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

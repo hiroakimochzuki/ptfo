@@ -1,0 +1,282 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\components\\pages\\orderpages\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\components\\pages\\orderpages\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\components\\pages\\orderpages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\components\\pages\\orderpages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\components\\pages\\orderdetail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\components\\pages\\orderdetail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\model\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\model\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\model\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\model\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\model\\order_memory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\model\\order_memory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\model\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\model\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\components\\pages\\orderform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\components\\pages\\orderform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\components\\pages\\orderstatus.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\components\\pages\\orderstatus.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\components\\pages\\orderallget.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\components\\pages\\orderallget.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\services\\chatgptservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\services\\chatgptservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|c:\\users\\hiros\\downloads\\microlink\\c#\\chatgpt_api_blazor_cursor\\chatgpt_api_blazor\\model\\pizzatopping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE2FCDC-722C-4194-87D5-CC9BBF7FEEFC}|ChatGPT_API_Blazor\\ChatGPT_API_Blazor.csproj|solutionrelative:chatgpt_api_blazor\\model\\pizzatopping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.razor",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\OrderPages\\Create.razor",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Components\\Pages\\OrderPages\\Create.razor",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\OrderPages\\Create.razor",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Components\\Pages\\OrderPages\\Create.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T07:22:43.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderDetail.razor",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\OrderDetail.razor",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Components\\Pages\\OrderDetail.razor",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\OrderDetail.razor",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Components\\Pages\\OrderDetail.razor",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAADsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T02:39:05.029Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Model\\OrderService.cs",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Model\\OrderService.cs",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Model\\OrderService.cs",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Model\\OrderService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T01:19:46.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Order.cs",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Order.cs",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Order.cs",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T05:34:59.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Pizza.cs",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Model\\Pizza.cs",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Model\\Pizza.cs",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Model\\Pizza.cs",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Model\\Pizza.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T04:19:08.965Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "OrderForm.razor",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\OrderForm.razor",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Components\\Pages\\OrderForm.razor",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\OrderForm.razor",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Components\\Pages\\OrderForm.razor",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAGIAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T05:18:06.692Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.razor",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\OrderPages\\Index.razor",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Components\\Pages\\OrderPages\\Index.razor",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\OrderPages\\Index.razor",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Components\\Pages\\OrderPages\\Index.razor",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA0AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-07T05:34:42.618Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T07:19:45.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\appsettings.json",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\appsettings.json",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\appsettings.json",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAApAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-21T01:11:29.321Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Order_memory.cs",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Model\\Order_memory.cs",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Model\\Order_memory.cs",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Model\\Order_memory.cs",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Model\\Order_memory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T01:12:27.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BookService.cs",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Model\\BookService.cs",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Model\\BookService.cs",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Model\\BookService.cs",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Model\\BookService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T02:41:10.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "OrderStatus.razor",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\OrderStatus.razor",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Components\\Pages\\OrderStatus.razor",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\OrderStatus.razor",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Components\\Pages\\OrderStatus.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T05:14:46.846Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "OrderAllGet.razor",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\OrderAllGet.razor",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Components\\Pages\\OrderAllGet.razor",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Components\\Pages\\OrderAllGet.razor",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Components\\Pages\\OrderAllGet.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T07:10:05.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Program.cs",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Program.cs",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Program.cs",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T05:03:29.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ChatGPTService.cs",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Services\\ChatGPTService.cs",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Services\\ChatGPTService.cs",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Services\\ChatGPTService.cs",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Services\\ChatGPTService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAYwEgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T02:05:51.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PizzaTopping.cs",
+              "DocumentMoniker": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Model\\PizzaTopping.cs",
+              "RelativeDocumentMoniker": "ChatGPT_API_Blazor\\Model\\PizzaTopping.cs",
+              "ToolTip": "C:\\Users\\hiros\\Downloads\\microlink\\C#\\ChatGPT_API_Blazor_cursor\\ChatGPT_API_Blazor\\Model\\PizzaTopping.cs",
+              "RelativeToolTip": "ChatGPT_API_Blazor\\Model\\PizzaTopping.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T02:31:46.356Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

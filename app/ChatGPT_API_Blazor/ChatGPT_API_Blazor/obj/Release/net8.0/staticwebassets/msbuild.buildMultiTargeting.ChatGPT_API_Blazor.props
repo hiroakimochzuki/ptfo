@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\ChatGPT_API_Blazor.props" />
-</Project>
