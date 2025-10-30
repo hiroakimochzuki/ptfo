@@ -1,0 +1,10 @@
+C:\Users\hiros\Downloads\microlink\C#\ChatGPT_API_Blazor\ChatGPT_API_Blazor.Client\obj\Release\net8.0\staticwebassets.build.json
+C:\Users\hiros\Downloads\microlink\C#\ChatGPT_API_Blazor\ChatGPT_API_Blazor.Client\obj\Release\net8.0\staticwebassets.build.json
+C:\Users\hiros\Downloads\microlink\C#\ChatGPT_API_Blazor\ChatGPT_API_Blazor.Client\obj\Release\net8.0\staticwebassets.build.json
+C:\Users\hiros\Downloads\microlink\C#\ChatGPT_API_Blazor\ChatGPT_API_Blazor.Client\obj\Release\net8.0\staticwebassets.build.json
+C:\Users\hiros\Downloads\microlink\C#\ChatGPT_API_Blazor\ChatGPT_API_Blazor.Client\obj\Release\net8.0\staticwebassets.build.json
+C:\Users\hiros\Downloads\microlink\C#\ChatGPT_API_Blazor\ChatGPT_API_Blazor.Client\obj\Release\net8.0\staticwebassets.build.json
+C:\Users\hiros\Downloads\microlink\C#\ChatGPT_API_Blazor\ChatGPT_API_Blazor.Client\obj\Release\net8.0\staticwebassets.build.json
+C:\Users\hiros\Downloads\microlink\C#\ChatGPT_API_Blazor\ChatGPT_API_Blazor.Client\obj\Release\net8.0\staticwebassets.build.json
+C:\Users\hiros\Downloads\microlink\C#\ChatGPT_API_Blazor\ChatGPT_API_Blazor.Client\obj\Release\net8.0\staticwebassets.build.json
+C:\Users\hiros\Downloads\microlink\C#\ChatGPT_API_Blazor\ChatGPT_API_Blazor.Client\obj\Release\net8.0\staticwebassets.build.json

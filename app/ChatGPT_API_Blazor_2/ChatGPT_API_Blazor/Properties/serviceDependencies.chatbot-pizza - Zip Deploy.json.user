@@ -1,0 +1,39 @@
+{
+  "dependencies": {
+    "mssql4": {
+      "restored": true,
+      "restoreTime": "2025-07-02T08:18:16.0913615Z"
+    },
+    "appInsights1": {
+      "restored": true,
+      "restoreTime": "2025-07-07T01:14:18.1477621Z"
+    }
+  },
+  "parameters": {
+    "mssql4.subscriptionId": {
+      "Name": "mssql4.subscriptionId",
+      "Type": "subscription",
+      "Value": "73c27e8d-7e51-4f69-a720-b612b574874a"
+    },
+    "mssql4.resourceGroupName": {
+      "Name": "mssql4.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "chatbot"
+    },
+    "appInsights1.resourceGroupName": {
+      "Name": "appInsights1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "chatbot"
+    },
+    "mssql4.serviceConnectorResourceGroupName": {
+      "Name": "mssql4.serviceConnectorResourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "chatbot"
+    },
+    "appInsights1.subscriptionId": {
+      "Name": "appInsights1.subscriptionId",
+      "Type": "subscription",
+      "Value": "73c27e8d-7e51-4f69-a720-b612b574874a"
+    }
+  }
+}

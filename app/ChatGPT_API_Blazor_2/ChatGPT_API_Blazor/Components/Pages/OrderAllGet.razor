@@ -1,0 +1,44 @@
+﻿@page "/orders-all-get"
+@using ChatGPT_API_Blazor.Model
+
+@inject OrderService OrderService
+
+<h3>全注文一覧</h3>
+
+@if (orders == null)
+{
+    <p>読み込み中…</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>注文番号</th>
+                <th>日時</th>
+                <th>お名前</th>
+                <th>合計</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var o in orders)
+            {
+                <tr>
+                    <td>@o.OrderId</td>
+                    <td>@o.CreatedTime.ToString("yyyy/MM/dd HH:mm")</td>
+                    <td>@o.DeliveryAddress.Name</td>
+                    <td>￥@o.GetTotalPrice()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Order>? orders;
+    protected override async Task OnInitializedAsync()
+    {
+        orders = await OrderService.
+        GetAllOrdersAsync();
+    }
+}

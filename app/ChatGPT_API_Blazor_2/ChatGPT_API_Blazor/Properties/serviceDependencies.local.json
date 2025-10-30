@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:ChatGPT_API_BlazorContext"
+    },
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('serviceConnectorResourceGroupName')]/providers/Microsoft.ServiceLinker/locations/canadacentral/connectors/ConnectionStringsDatabaseConnection_566F6F9E46",
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/chatbot-pizza-server/databases/chatbot-pizza-database",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DatabaseConnection",
+      "dynamicId": null
+    },
+    "mssql3": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('serviceConnectorResourceGroupName')]/providers/Microsoft.ServiceLinker/locations/canadacentral/connectors/ConnectionStringsDatabaseConnection1_ED136CB5B9",
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/chatbot-pizza-server/databases/chatbot-pizza-database",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DatabaseConnection1",
+      "dynamicId": null
+    }
+  }
+}

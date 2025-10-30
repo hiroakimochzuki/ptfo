@@ -1,0 +1,44 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<div class="container py-5">
+    <div class="row justify-content-center mb-4">
+        <div class="col-12 text-center">
+            <h1 class="display-4 fw-bold text-primary mb-3">ようこそ！</h1>
+            <p class="lead text-secondary">ご希望のサービスをお選びください。</p>
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-3 mb-3">
+            <NavLink href="pizzadeliver" class="btn btn-lg btn-block btn-pink w-100 py-4 shadow rounded-3 d-flex flex-column align-items-center">
+                <span class="fs-1 mb-2">🍕</span>
+                <span class="fs-4">ピザを注文する</span>
+            </NavLink>
+        </div>
+        <div class="col-md-3 mb-3">
+            <NavLink href="chat" class="btn btn-lg btn-block btn-success w-100 py-4 shadow rounded-3 d-flex flex-column align-items-center">
+                <span class="fs-1 mb-2">🤖</span>
+                <span class="fs-4">GPTと会話する</span>
+            </NavLink>
+        </div>
+        <div class="col-md-3 mb-3">
+            <NavLink href="orders" class="btn btn-lg btn-block btn-secondary w-100 py-4 shadow rounded-3 d-flex flex-column align-items-center">
+                <span class="fs-1 mb-2">🔧</span>
+                <span class="fs-4">管理者ページ</span>
+            </NavLink>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-pink {
+        background: linear-gradient(90deg, #ffb6c1 0%, #ff69b4 100%);
+        color: #fff;
+        border: none;
+    }
+    .btn-pink:hover {
+        background: linear-gradient(90deg, #ff69b4 0%, #ffb6c1 100%);
+        color: #fff;
+    }
+</style>

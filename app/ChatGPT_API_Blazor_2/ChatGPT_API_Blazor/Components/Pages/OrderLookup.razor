@@ -1,0 +1,31 @@
+﻿@page "/order-lookup"
+@inject NavigationManager Nav
+@rendermode InteractiveServer
+
+<h3>注文照会</h3>
+
+<div class="form-group">
+    <label for="orderIdInput">オーダーIDを入力してください</label>
+    <input id="orderIdInput"
+           type="number"
+           class="form-control"
+           @bind="orderId"
+           placeholder="例: 123" />
+</div>
+
+<button class="btn btn-primary"
+        @onclick="GoToDetails"
+        disabled="@(orderId <= 0)">
+    照会する
+</button>
+
+@code {
+    private int orderId;
+
+    private void GoToDetails()
+    {
+        // orderId が正の整数であれば、OrderDetails ページへ遷移
+        Nav.NavigateTo($"/order-details/{orderId}");
+    }
+}
+

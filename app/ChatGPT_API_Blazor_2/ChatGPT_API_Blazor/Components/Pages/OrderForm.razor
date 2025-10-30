@@ -1,0 +1,101 @@
+﻿@page "/order"
+@using ChatGPT_API_Blazor.Model
+@inject CartService CartService
+@inject OrderService OrderService
+@inject NavigationManager Nav
+@rendermode InteractiveServer
+
+<h2>配送先情報を入力して注文を確定</h2>
+
+<EditForm Model="@deliveryAddress"
+          OnValidSubmit="PlaceOrder"
+          FormName="DeliveryForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="grid gap-4 max-w-md">
+        <div>
+            <label class="font-semibold">お名前</label>
+            <input value="@deliveryAddress.Name"
+                   @oninput="@(e => deliveryAddress.Name = (e as ChangeEventArgs).Value?.ToString() ?? string.Empty)"
+                   class="input" />
+            <ValidationMessage For="@(() => deliveryAddress.Name)" />
+        </div>
+
+        <div>
+            <label class="font-semibold">番地・丁目 (Street)</label>
+            <input value="@deliveryAddress.Street"
+                   @oninput="@(e => deliveryAddress.Street = (e as ChangeEventArgs).Value?.ToString() ?? string.Empty)"
+                   class="input" />
+            <ValidationMessage For="@(() => deliveryAddress.Street)" />
+        </div>
+
+        <div>
+            <label class="font-semibold">市区町村 (City)</label>
+            <input value="@deliveryAddress.City"
+                   @oninput="@(e => deliveryAddress.City = (e as ChangeEventArgs).Value?.ToString() ?? string.Empty)"
+                   class="input" />
+            <ValidationMessage For="@(() => deliveryAddress.City)" />
+        </div>
+
+        <div>
+            <label class="font-semibold">都道府県 (Prefecture)</label>
+            <input value="@deliveryAddress.Prefecture"
+                   @oninput="@(e => deliveryAddress.Prefecture = (e as ChangeEventArgs).Value?.ToString() ?? string.Empty)"
+                   class="input" />
+            <ValidationMessage For="@(() => deliveryAddress.Prefecture)" />
+        </div>
+
+        <div>
+            <label class="font-semibold">郵便番号 (PostalCode)</label>
+            <input value="@deliveryAddress.PostalCode"
+                   @oninput="@(e => deliveryAddress.PostalCode = (e as ChangeEventArgs).Value?.ToString() ?? string.Empty)"
+                   class="input" />
+            <ValidationMessage For="@(() => deliveryAddress.PostalCode)" />
+        </div>
+
+        <div>
+            <label class="font-semibold">電話番号 (Phone)</label>
+            <input value="@deliveryAddress.Phone"
+                   @oninput="@(e => deliveryAddress.Phone = (e as ChangeEventArgs).Value?.ToString() ?? string.Empty)"
+                   class="input" />
+            <ValidationMessage For="@(() => deliveryAddress.Phone)" />
+        </div>
+
+        <button type="submit" class="btn btn-success mt-4">
+            注文を確定する
+        </button>
+    </div>
+</EditForm>
+
+@code {
+    private Address deliveryAddress = new();
+    private List<CartItem> cartItems = new();
+
+    protected override void OnInitialized()
+    {
+        cartItems = CartService.GetCartItems();
+    }
+
+    private async Task PlaceOrder()
+    {
+        var order = new Order
+            {
+                OrderId = new Random().Next(1000, 9999),
+                UserId = "guest",
+                CreatedTime = DateTime.Now,
+                DeliveryAddress = deliveryAddress,
+                Pizzas = cartItems.Select(item => new Pizza
+                {
+                    Name = item.Pizza.Name,
+                    BasePrice = item.Pizza.BasePrice,
+                    Quantity = item.Quantity
+                }).ToList()
+            };
+
+        var saveId=await OrderService.SaveOrderAsync(order);
+        Console.WriteLine($"注文を保存しました: OrderId={saveId}");
+        CartService.Clear();
+        Nav.NavigateTo($"/order-status/{saveId}");
+    }
+}

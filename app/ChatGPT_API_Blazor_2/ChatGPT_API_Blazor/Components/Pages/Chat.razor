@@ -1,0 +1,159 @@
+﻿@page "/chat"
+@using ChatGPT_API_Blazor.Services
+@rendermode InteractiveServer
+@inject ChatGPTService chatGPTService;
+
+<h3>ChatGPT Chat</h3>
+
+<div class="chat-input">
+    <input @bind="_userInput" class="input-text" placeholder="メッセージを入力してください" />
+    <button @onclick="SendQuery" class="send-button" disabled="@isLoading">送信</button>
+
+</div>
+
+<button @onclick="ClearMessages" class="btn btn-outline-danger">会話をリセット</button>
+
+
+<div class="chat-messages">
+    @foreach (var message in _messages)
+    {
+        <div class="chat-bubble @(message.IsUser ? "user" : "bot")">
+            @if (!message.IsEditing)
+            {
+                <span><strong>@(message.IsUser ? "You:" : "ChatGPT:")</strong> @message.Text</span>
+                @if (message.IsUser)
+                {
+                    <button @onclick="@(() => DeleteMessage(message))" class="icon-btn">🗑</button>
+                }
+            }
+            
+        </div>
+    }
+
+    @if (isLoading)
+    {
+        <div class="chat-bubble bot">
+            <div class="spinner">思考中・・・</div>
+        </div>
+    }
+</div>
+
+
+
+<style>
+.chat-messages {
+	flex-grow: 1;
+	overflow-y: auto;
+	padding: 10px;
+	background-color: #f8f8f8;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+}
+
+.chat-bubble {
+	max-width: 70%;
+	padding: 10px;
+	margin: 4px;
+	border-radius: 10px;
+	clear: both;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+	.chat-bubble.user {
+		background-color: #daf1ff;
+		float: right;
+		text-align: right;
+	}
+
+	.chat-bubble.bot {
+		background-color: #eaeaea;
+		float: left;
+		text-align: left;
+	}
+
+.spinner {
+	font-style: italic;
+	color: gray;
+}
+
+.chat-input {
+	display: flex;
+	gap: 10px;
+	margin-top: 15px;
+}
+
+    .input-text {
+        resize: none;
+        overflow: hidden;
+        min-height: 40px;
+        max-height: 200px;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+        border: 1px solid #ccc;
+        line-height: 1.4;
+        font-size: 1rem;
+    }
+
+
+.send-button {
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	background-color: #007bff;
+	color: white;
+}
+
+    .icon-btn {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        margin-left: 8px;
+    }
+</style>
+
+
+@code {
+    private bool isLoading = false;
+    private string _userInput = "";
+
+    private List<ChatMessage> _messages = new();
+
+    private async Task SendQuery()
+    {
+        if (!string.IsNullOrWhiteSpace(_userInput))
+        {
+            _messages.Add(new ChatMessage { Text = _userInput, IsUser = true });
+            isLoading = true;
+            StateHasChanged();
+
+            var response = await chatGPTService.AskGPT4(_userInput);
+            _messages.Add(new ChatMessage { Text = response, IsUser = false });
+            _userInput = "";
+            isLoading = false;
+
+            StateHasChanged();
+        }
+    }
+
+    
+
+    public class ChatMessage
+    {
+        public string Text { get; set; }
+        public bool IsUser { get; set; }
+
+        public bool IsEditing { get; set; } = false;
+    }
+
+    private void DeleteMessage(ChatMessage message)
+    {
+        _messages.Remove(message);
+    }
+
+    private void ClearMessages()
+    {
+        _messages.Clear();
+    }
+}
