@@ -1,0 +1,58 @@
+﻿@page "/order-status/{orderId:int}"
+@using ChatGPT_API_Blazor.Model
+@inject OrderService OrderService
+@inject NavigationManager Nav
+
+<h3>ご注文が確定しました！</h3>
+
+@if (order == null)
+{
+    <p>注文情報が見つかりませんでした。</p>
+    <NavLink href="/pizzadeliver">メニューに戻る</NavLink>
+}
+else
+{
+    <div class="alert alert-success">
+        注文番号: <strong>@order.OrderId</strong><br />
+        注文日時: @order.CreatedTime.ToString("yyyy/MM/dd HH:mm")
+    </div>
+
+    <h4>配送先情報</h4>
+    <ul>
+        <li>お名前: @order.DeliveryAddress.Name</li>
+        <li>
+            住所: @order.DeliveryAddress.Prefecture
+            @order.DeliveryAddress.City
+            @order.DeliveryAddress.Street
+        </li>
+        <li>郵便番号: @order.DeliveryAddress.PostalCode</li>
+        <li>電話番号: @order.DeliveryAddress.Phone</li>
+    </ul>
+
+    <h4>ご注文内容</h4>
+    <ul>
+        @foreach (var pizza in order.Pizzas)
+        {
+            <li>@(pizza.Name) – ￥@pizza.BasePrice × @pizza.Quantity</li>
+        }
+    </ul>
+
+    <p>
+        <strong>合計:</strong>
+        ￥@order.GetTotalPrice().ToString("0")
+    </p>
+
+    <NavLink class="btn btn-primary" href="/pizzadeliver">トップに戻る</NavLink>
+}
+
+@code {
+    [Parameter]
+    public int orderId { get; set; }
+
+    private Order? order;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        order = await OrderService.GetOrderByIdAsync(orderId);
+    }
+}

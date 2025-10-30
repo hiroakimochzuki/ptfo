@@ -1,0 +1,55 @@
+﻿@page "/pizzaorder"
+@using ChatGPT_API_Blazor.Model
+@inject CartService CartService
+@rendermode InteractiveServer
+
+<div class="min-h-screen bg-gray-100 px-4 py-10 flex flex-col items-center">
+    <h3 class="text-3xl font-bold text-gray-800 mb-6">🍕 ご注文内容</h3>
+
+    @if (cartItems.Count == 0)
+    {
+        <p class="text-lg text-gray-600 mb-6">カートが空です。</p>
+
+        <!-- 戻るボタンのみ表示 -->
+        <NavLink class="px-5 py-2 bg-gray-300 text-gray-800 rounded-xl hover:bg-gray-400 transition" href="pizzadeliver">
+            ← 戻る
+        </NavLink>
+    }
+    else
+    {
+        <div class="w-full max-w-md bg-white rounded-2xl shadow p-6">
+            <ul class="space-y-4 mb-6">
+                @foreach (var item in cartItems)
+                {
+                    <li class="flex justify-between text-lg text-gray-700 border-b pb-2">
+                        <span>@item.Pizza.Name x @item.Quantity</span>
+                        <span>$@((item.Pizza.BasePrice * item.Quantity).ToString("0.00"))</span>
+                    </li>
+                }
+            </ul>
+
+            <p class="text-xl font-semibold text-right text-gray-800">
+                合計: $@CartService.GetTotalAmount().ToString("0.00")
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-between gap-4 mt-6">
+                <NavLink class="px-5 py-2 bg-gray-300 text-gray-800 rounded-xl hover:bg-gray-400 transition text-center w-full sm:w-auto" href="pizzadeliver">
+                    ← 戻る
+                </NavLink>
+
+                <NavLink class="px-5 py-2 bg-green-500 text-gray-800 rounded-xl hover:bg-green-600 transition text-center w-full sm:w-auto" href="order">
+                    決済 →
+                </NavLink>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    List<CartItem> cartItems = new();
+
+    protected override void OnInitialized()
+    {
+        cartItems = CartService.GetCartItems();
+    }
+}

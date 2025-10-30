@@ -1,0 +1,18 @@
+﻿@page "/test-onclick"
+@rendermode InteractiveServer
+
+<h3>ボタンクリック確認テスト</h3>
+
+<p>クリック回数: @clickCount</p>
+
+<button @onclick="OnClickTest">クリックしてみてください</button>
+
+@code {
+    int clickCount = 0;
+
+    void OnClickTest()
+    {
+        clickCount++;
+    }
+}
+
